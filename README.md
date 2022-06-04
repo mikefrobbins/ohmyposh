@@ -37,7 +37,7 @@ Configure Windows Terminal to use the CaskaydiaCove font:
 }
 ```
 
-Add the following to you PowerShell profile. The referenced theme can be found in the themes folder
+Add the following to your PowerShell profile. The referenced theme can be found in the themes folder
 of this repo.
 
 ```powershell
