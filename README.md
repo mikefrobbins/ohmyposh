@@ -19,7 +19,7 @@ PowerShell 7 is not required, although it is recommended.
 Install Oh My Posh:
 
 ```powershell
-winget install oh-my-posh
+winget install JanDeDobbeleer.OhMyPosh
 ```
 
 Install the CaskaydiaCove (CascadiaCode) nerd font:

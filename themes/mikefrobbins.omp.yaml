@@ -1,13 +1,22 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-console_title_template: "{{.Shell}} | admin: {{.Root}}"
+console_title_template: " {{.Shell}} | admin: {{.Root}} "
 blocks:
 - alignment: right
   segments:
   - type: executiontime
     style: diamond
-    trailing_diamond: "<transparent,>\ue0b2</>"
+    trailing_diamond: "<transparent></>"
     template: " {{ .FormattedMs }} "
     foreground: "#8f43f3"
+    properties:
+      always_enabled: true
+  - type: exit
+    style: diamond
+    trailing_diamond: "<transparent></>"
+    template: " {{ if gt .Code 0 }}\uf525{{ else }}\uf469 \u2665{{ end }} "
+    foreground_templates:
+    - " {{ if gt .Code 0 }}#ff6347{{ else }}#78ff78{{ end }} "
+    foreground: "#78ff78"
     properties:
       always_enabled: true
   type: prompt
@@ -17,7 +26,7 @@ blocks:
   segments:
   - type: os
     style: diamond
-    trailing_diamond: "<transparent,>\ue0b2</>"
+    trailing_diamond: "<transparent></>"
     template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}} "
     foreground: cyan
     properties:
@@ -40,23 +49,23 @@ blocks:
       wsl_separator: " on "
   - type: shell
     style: diamond
-    trailing_diamond: "<transparent,>\ue0b2</>"
+    trailing_diamond: "<transparent></>"
     foreground: "#c0c0c0"
     template: "\uf489 {{ .Name }}"
   - type: path
     style: diamond
-    trailing_diamond: "<transparent,>\ue0b2</>"
+    trailing_diamond: "<transparent></>"
     template: " \ue5fe {{ .Location}}{{ if .Segments.Poshgit.Status }}{{ else }}\uf307{{ end }}"
     foreground_templates:
-    - "{{ if .Segments.Poshgit.Status }}#ffff00{{ end }}"
+    - " {{ if .Segments.Poshgit.Status }}#ffff00{{ end }} "
     foreground: "#c0c0c0"
     properties:
       folder_separator_icon: "\\"
       style: full
   - type: poshgit
     style: diamond
-    trailing_diamond: "<transparent,>\ue0b2</>\n\uf307"
-    foreground: "cyan"
+    trailing_diamond: "<transparent></>\n\uf307"
+    foreground: "#00ffff"
   type: prompt
 final_space: true
 version: 2
