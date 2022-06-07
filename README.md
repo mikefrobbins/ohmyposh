@@ -16,34 +16,50 @@ PowerShell 7 is not required, although it is recommended.
 
 ## Installation and configuration
 
-Install Oh My Posh:
+1. Install Oh My Posh:
 
-```powershell
-winget install JanDeDobbeleer.OhMyPosh
-```
+   ```powershell
+   winget install JanDeDobbeleer.OhMyPosh
+   ```
 
-Install the CaskaydiaCove (CascadiaCode) nerd font:
+1. Install the [CaskaydiaCove](https://github.com/ryanoasis/nerd-fonts/releases/) nerd font.
 
-```powershell
-oh-my-posh font install
-```
-
-Configure Windows Terminal to use the CaskaydiaCove font:
+1. Configure Windows Terminal to use the CaskaydiaCove font:
 
 ```json
-"font":
-{
-    "face": "CaskaydiaCove Nerd Font"
-}
-```
+   "font":
+   {
+       "face": "CaskaydiaCove Nerd Font"
+   }
+   ```
 
-Add the following to your PowerShell profile. The referenced theme can be found in the themes folder
+1. Add the following to your PowerShell profile. The referenced theme can be found in the themes folder
 of this repo.
 
+   ```powershell
+   oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\mikefrobbins.omp.yaml" | Invoke-Expression
+   $env:POSH_GIT_ENABLED = $true
+   ```
+
+## Additional notes
+
+Oh My Posh adds the following environment variables:
+
 ```powershell
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\mikefrobbins.omp.yaml" | Invoke-Expression
-$env:POSH_GIT_ENABLED = $true
+$env:POSH_GIT_ENABLED
+$env:POSH_THEME
+$env:POSH_THEMES_PATH
+$env:POWERLINE_COMMAND
 ```
+
+Determine the path to the Oh My Posh executable.
+
+```powershell
+(Get-Command -Name oh-my-posh.exe).Source
+```
+
+The Oh My Posh executable may need to be added to the exclusions of your antivirus software or
+Windows Defender if you're experiencing performance issues.
 
 ## Disclaimer
 
